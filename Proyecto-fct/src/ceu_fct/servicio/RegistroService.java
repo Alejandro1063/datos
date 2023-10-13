@@ -6,24 +6,30 @@ import java.util.List;
 
 import ceu_fct.dao.RegistroDao;
 import ceu_fct.modelo.Registro;
+import exception.RegistroServiceException;
+import exception.UsuarioNoExisteException;
 
 public class RegistroService {
 
 	private OpenConnection conn;
+
 
 	public RegistroService() {
 		conn = new OpenConnection();
 
 	}
 
-	public List<Registro> consultarRegistro(Long id) throws RegistroServiceException {
-		Connection conn = null;
+	public List<Registro> consultarRegistrosUsuarios(Long idUsuario)
+			throws RegistroServiceException, UsuarioNoExisteException {
+		Connection con = null;
 
 		try {
+			con = conn.getConection();
+			RegistroDao regDao = new RegistroDao();
 
-			RegistroDao registro = new RegistroDao();
+			regDao.consultarRegistro(con, idUsuario);
 
-			return registro.consultarRegistro(conn, id);
+			return regDao.consultarRegistro(con, idUsuario);
 
 		} catch (SQLException e) {
 			System.out.println("Error en la base de datos" + e.getMessage());
@@ -33,11 +39,34 @@ public class RegistroService {
 
 		finally {
 			try {
-				conn.close();
+				con.close();
 			} catch (Exception e) {
 			}
 
 		}
 	}
 
+	public void insertarRegistro(Registro reg) throws RegistroServiceException{
+		Connection con = null;
+		
+		try {
+			con = conn.getConection();
+			RegistroDao regisDao = new  RegistroDao();
+			if(regisDao.consultarUnicoRegistro(con, reg.getId_usuario(), reg.getFecha()) != null) {
+				
+				throw new RegistroServiceException("Ya existe ese registro");
+			}
+			regisDao.insertarRegistro(con, reg);
+		} catch (Exception e) {
+			System.out.println("Error en la base de datos" + e.getMessage());
+			e.printStackTrace();
+			throw new RegistroServiceException();
+		}
+
+		finally {
+			try {
+				con.close();
+			} catch (Exception e) {
+			}}
+}
 }

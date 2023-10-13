@@ -21,7 +21,7 @@ public class UsuarioDao {
 			Usuario usuarioConsultado = new Usuario();
 			
 			if(rs.next()) {
-			usuarioConsultado.setId_usuario(rs.getLong("Customer_id"));
+			usuarioConsultado.setId_usuario(rs.getLong("id_usuario"));
 			usuarioConsultado.setEmail(rs.getString("email"));
 			usuarioConsultado.setPassword(rs.getString("password"));
 			usuarioConsultado.setNombre(rs.getString("nombre"));
@@ -55,7 +55,7 @@ public class UsuarioDao {
 		try {
 
 			stmt = conn.prepareStatement(
-					"INSERT INTO usuarios( email, password, nombre, apellidos, ciclo, activo) VALUES (?,?,?,?,?,?)" , Statement.RETURN_GENERATED_KEYS);
+					"INSERT INTO usuarios(email, password, nombre, apellidos, ciclo, activo) VALUES (?,?,?,?,?,?)" , Statement.RETURN_GENERATED_KEYS);
 			
 			stmt.setString(1, user.getEmail());
 			stmt.setString(2, user.getPassword());
