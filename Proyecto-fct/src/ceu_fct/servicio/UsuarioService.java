@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import ceu_fct.dao.UsuarioDao;
+import ceu_fct.exception.AutenticationException;
+import ceu_fct.exception.UsuarioNoExisteException;
+import ceu_fct.exception.UsuarioServiceException;
 import ceu_fct.modelo.Usuario;
-import exception.AutenticationException;
-import exception.UsuarioNoExisteException;
-import exception.UsuarioServiceException;
 
 public class UsuarioService {
 
@@ -63,8 +63,6 @@ public class UsuarioService {
 			con = conn.getConection();
 			Usuario userBien = new Usuario();
 			UsuarioDao userDao = new UsuarioDao();
-			UsuarioDao userInsertar = new UsuarioDao();
-			
 			userBien = userDao.consultarUsuario(con, user.getEmail());
 			if (userBien != null) {
 				throw new UsuarioServiceException("El usuario ya existe");

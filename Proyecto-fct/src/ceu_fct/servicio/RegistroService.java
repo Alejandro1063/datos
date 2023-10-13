@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import ceu_fct.dao.RegistroDao;
+import ceu_fct.exception.RegistroServiceException;
+import ceu_fct.exception.UsuarioNoExisteException;
 import ceu_fct.modelo.Registro;
-import exception.RegistroServiceException;
-import exception.UsuarioNoExisteException;
 
 public class RegistroService {
 
