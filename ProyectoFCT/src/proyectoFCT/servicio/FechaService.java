@@ -22,7 +22,8 @@ public class FechaService {
 		conn = new OpenConnection();
 
 	}
-	
+
+	// Método que devuelve una lista de fechas filtradas por la evaluación actual
 	public List<Fecha> consultarFechasActuales() throws EvaluacionException, FechaServiceException{
 		Connection con = null;
 				
