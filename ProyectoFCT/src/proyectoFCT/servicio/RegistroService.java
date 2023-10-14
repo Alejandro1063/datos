@@ -19,6 +19,7 @@ public class RegistroService {
 
 	}
 
+	// Método que devuelve una lista de registros dependiendo del id del usuario
 	public List<Registro> consultarRegistrosUsuarios(Long idUsuario)
 			throws RegistroServiceException, UsuarioNoExisteException {
 		Connection con = null;
@@ -45,7 +46,7 @@ public class RegistroService {
 
 		}
 	}
-
+	// Método que inserta un nuevo registro
 	public void insertarRegistro(Registro reg) throws RegistroServiceException{
 		Connection con = null;
 		
