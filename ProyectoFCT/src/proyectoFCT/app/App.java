@@ -25,19 +25,19 @@ public static void main(String[] args) {
 	RegistroService regi = new RegistroService();
 	
 	/*
-	try {
+	try { //testeo para comprobar si existe el usuario en la bbdd
 		userService.loginUsuario("Ale@ceu.es", "1234");
 		System.out.println("Login correcto");
-	} catch (UsuarioNoExisteException e) {
+	} catch (UsuarioNoExisteException e) { //excepción para mostrar si el usuario no existe
 		e.printStackTrace();
-	} catch (AutenticationException e) {
+	} catch (AutenticationException e) { // excepción de autenticación por si la contraseña no corresponde
 		e.printStackTrace();
-	} catch (UsuarioServiceException e) {
+	} catch (UsuarioServiceException e) { // excepción para cualquier otro tipo de error
 		e.printStackTrace();
 	}
 	
 	*/
-	/*try {
+	/*try { // testeo para dar de alta un usuario en la bbdd
 
 		user.setActivo(true);
 		user.setApellidos("Rod Hir");
@@ -48,19 +48,17 @@ public static void main(String[] args) {
 		user.setPassword("1234");
 		System.out.println(user);
 		userService.altaUsuario(user);
-	} catch (UsuarioServiceException e) {
+	} catch (UsuarioServiceException e) { // excepción creada por si el usuario ya existe en la bbdd
 		e.printStackTrace();
 	}
 	*/
 	
 	/*
-		try {
+		try { // testeo para recoger las fechas según la evaluación actual (la evalucación se asigna automáticamente dependiendo del sysdate)
 			System.out.println(fech.consultarFechasActuales());
-		} catch (EvaluacionException e) {
-			// TODO Auto-generated catch block
+		} catch (EvaluacionException e) { // Excepción que se lanza si la fecha actual está fuera de cualquier evaluación
 			e.printStackTrace();
-		} catch (FechaServiceException e) {
-			// TODO Auto-generated catch block
+		} catch (FechaServiceException e) { // Excepción lanzada cuando hay algún error en la bbdd
 			e.printStackTrace();
 		}
 	
@@ -73,19 +71,19 @@ public static void main(String[] args) {
 	reg.setNumHoras(new BigDecimal(9));
 	
 	try {
-		regi.insertarRegistro(reg);
-	} catch (RegistroServiceException e) {
-		// TODO Auto-generated catch block
+		regi.insertarRegistro(reg); // testeo para insertar registros nuevos en la bbdd
+	} catch (RegistroServiceException e) { // Excepción lanzada cuando ya existe un registro en la bbdd con los mismos parámetros que la que se pretende insertar
+		
 		e.printStackTrace();
 	}
 	*/
 	/*
 	try {
-		System.out.println(regi.consultarRegistrosUsuarios(3L));
-	} catch (RegistroServiceException e) {
+		System.out.println(regi.consultarRegistrosUsuarios(3L)); // testeo para recibir una lista de registros filtrado por el id del usuario
+	} catch (RegistroServiceException e) { // Excepción lanzada cuando hay algún error en la bbdd
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	} catch (UsuarioNoExisteException e) {
+	} catch (UsuarioNoExisteException e) { // Excepción lanzada cuando no existe el id del usuario en la bbdd
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
