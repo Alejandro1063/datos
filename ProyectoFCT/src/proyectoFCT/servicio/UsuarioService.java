@@ -17,7 +17,7 @@ public class UsuarioService {
 		conn = new OpenConnection();
 
 	}
-
+	// Método que devuelve un usuario, si este se corresponde con algún usuario en la bbdd
 	public Usuario loginUsuario(String mail, String pass)
 			throws UsuarioNoExisteException, AutenticationException, UsuarioServiceException {
 		Connection con = null;
@@ -55,7 +55,7 @@ public class UsuarioService {
 		}
 
 	}
-
+	//Método que da de alta a un nuevo usuario en la bbdd si no existe alguno ya en la bbdd con el mismo Email (o nombre de usuario)
 	public void altaUsuario(Usuario user) throws UsuarioServiceException {
 		Connection con = null;
 
@@ -84,11 +84,6 @@ public class UsuarioService {
 			}
 
 		}
-
-		// consultar si el email está registrado
-		// si es distinto de null, lanzo excepcion
-		// si no existe inserta el usuario
-		// si hay error lanzamos FCTException
 
 	}
 
